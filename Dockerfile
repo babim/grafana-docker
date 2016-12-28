@@ -1,6 +1,7 @@
-FROM debian:jessie
+FROM babim/debianbase
 
-ARG GRAFANA_VERSION
+ENV GRAFANA_VERSION=4.0.2-1481203731 \
+    GOSU_VERSION=1.9
 
 RUN apt-get update && \
     apt-get -y --no-install-recommends install libfontconfig curl ca-certificates && \
@@ -8,7 +9,7 @@ RUN apt-get update && \
     curl https://grafanarel.s3.amazonaws.com/builds/grafana_${GRAFANA_VERSION}_amd64.deb > /tmp/grafana.deb && \
     dpkg -i /tmp/grafana.deb && \
     rm /tmp/grafana.deb && \
-    curl -L https://github.com/tianon/gosu/releases/download/1.7/gosu-amd64 > /usr/sbin/gosu && \
+    curl -L https://github.com/tianon/gosu/releases/download/$GOSU_VERSION/gosu-amd64 > /usr/sbin/gosu && \
     chmod +x /usr/sbin/gosu && \
     apt-get remove -y curl && \
     apt-get autoremove -y && \
