@@ -1,4 +1,4 @@
-FROM babim/debianbase
+FROM babim/debianbase:ssh
 
 ENV GRAFANA_VERSION=4.0.2-1481203731 \
     GOSU_VERSION=1.9
@@ -20,7 +20,7 @@ RUN mv /etc/grafana/grafana.ini /
 
 VOLUME ["/var/lib/grafana", "/var/log/grafana", "/etc/grafana"]
 
-EXPOSE 3000
+EXPOSE 3000 22
 
 COPY ./run.sh /run.sh
 
