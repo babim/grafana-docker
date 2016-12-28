@@ -2,6 +2,9 @@
 # make start
 if [ ! -f "/etc/grafana/grafana.ini" ]; then cp /grafana.ini /etc/grafana/ ;fi
 
+# ssh
+if [ -f "/runssh.sh" ]; then /runssh.sh; fi
+
 : "${GF_PATHS_DATA:=/var/lib/grafana}"
 : "${GF_PATHS_LOGS:=/var/log/grafana}"
 : "${GF_PATHS_PLUGINS:=/var/lib/grafana/plugins}"
