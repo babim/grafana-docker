@@ -1,4 +1,6 @@
 #!/bin/bash -e
+# make start
+if [ ! -f "/etc/grafana/grafana.ini" ]; then cp /grafana.ini /etc/grafana/ ;fi
 
 : "${GF_PATHS_DATA:=/var/lib/grafana}"
 : "${GF_PATHS_LOGS:=/var/log/grafana}"
